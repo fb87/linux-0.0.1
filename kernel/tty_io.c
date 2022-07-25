@@ -271,7 +271,8 @@ int tty_write(unsigned channel, char * buf, int nr)
 				if (c=='\r' && O_CRNL(tty))
 					c='\n';
 				else if (c=='\n' && O_NLRET(tty))
-					c='\r';
+					c='\n';
+
 				if (c=='\n' && !cr_flag && O_NLCR(tty)) {
 					cr_flag = 1;
 					PUTCH(13,tty->write_q);
